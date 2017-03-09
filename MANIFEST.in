@@ -1,1 +1,1 @@
-include realex_files/*.xml
+include realex/realex_files/*.xml
