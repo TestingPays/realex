@@ -15,10 +15,10 @@ _ORDERID_LENGTH = 13
 
 class Realex:
     SHARED_SECRET = None
-    AUTH_URL = None
+    AUTH_URL = "https://api.realexpayments.com/epage-remote.cgi"
     MERCHANT_ID = None
-    VERIFY_SIGNED_URL = None
-    VERIFY_ENROLLED_URL = None
+    VERIFY_SIGNED_URL = "https://api.realexpayments.com/epage-remote.cgi"
+    VERIFY_ENROLLED_URL = "https://api.realexpayments.com/epage-remote.cgi"
     CALLBACK_URL = None
 
     @classmethod
