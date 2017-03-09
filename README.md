@@ -4,7 +4,7 @@ Realex SDK for **auth**, **3ds\_verifiyenrolled** and **3ds\_verifysig** calls.
 
 # Requirements
 
-Python 2.7 or Python 3.4+
+Python 2.7 or Python 3.6+
 
 # Installation
 
