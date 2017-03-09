@@ -8,4 +8,5 @@ setup(name='realex',
       author_email='luke.rickard@thepayment.works',
       license='MIT',
       packages=['realex'],
-      zip_safe=False)
+      zip_safe=False,
+      include_package_data=True)
