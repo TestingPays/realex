@@ -111,9 +111,12 @@ def _parse_verify_signed_response(response):
 
     untangled_response = extract_xml_response(response)
 
-    return {'status_code': response.status_code, 'cavv': untangled_response['threedsecure']['cavv'],
-            'eci': untangled_response['threedsecure']['eci'], 'xid': untangled_response['threedsecure']['xid'],
-            'message': untangled_response['message'], 'realex_result_code': untangled_response['result'],
+    return {'status_code': response.status_code,
+            'cavv': untangled_response['threedsecure']['cavv'],
+            'eci': untangled_response['threedsecure']['eci'],
+            'xid': untangled_response['threedsecure']['xid'],
+            'message': untangled_response['message'],
+            'realex_result_code': untangled_response['result'],
             'status': untangled_response['threedsecure']['status']}
 
 
@@ -124,9 +127,13 @@ def _parse_verify_enrolled_response(response, order_id, sha1hash):
     untangled_response = extract_xml_response(response)
 
     return {'status_code': response.status_code,
-            'realex_result_code': untangled_response['result'], 'message': untangled_response['message'],
-            'pareq': untangled_response['pareq'], 'url': untangled_response['url'],
-            'enrolled': untangled_response['enrolled'], 'order_id': order_id, 'sha1hash': sha1hash}
+            'realex_result_code': untangled_response['result'],
+            'message': untangled_response['message'],
+            'pareq': untangled_response['pareq'],
+            'url': untangled_response['url'],
+            'enrolled': untangled_response['enrolled'],
+            'order_id': order_id,
+            'sha1hash': sha1hash}
 
 
 def _generate_xml_data(base_xml, amount, currency, order_id, timestamp, sha1hash, card_holder_name=None,
@@ -204,7 +211,7 @@ def _generate_order_id():
 
 
 def _generate_sha1hash(timestamp, merchant_id, orderid, amount, currency, card_number, shared_secret):
-    initial_sha1_hash = hashlib.sha1((timestamp + merchant_id + orderid + amount + currency + card_number)
+    initial_sha1_hash = hashlib.sha1((timestamp + "." + merchant_id + "." + orderid + "." + amount + "." + currency + "." + card_number)
                                      .encode('utf-8')).hexdigest()
 
     return hashlib.sha1((initial_sha1_hash + "." + shared_secret).encode('utf-8')).hexdigest()
