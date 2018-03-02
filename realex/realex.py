@@ -88,9 +88,10 @@ class Realex:
                              headers=_generate_basic_xml_headers())
 
     @classmethod
-    def verify_signed(cls, amount, currency, pares, sha1hash, order_id):
+    def verify_signed(cls, amount, currency, pares, order_id):
         timestamp = _generate_time_stamp()
         amount = _remove_decimal_places(amount)
+        sha1hash = _generate_sha1hash(timestamp, cls.MERCHANT_ID, order_id, amount, currency, "", cls.SHARED_SECRET)
         response = requests.post(cls.VERIFY_SIGNED_URL,
                                  data=_generate_xml_data(_BASE_3DS_VERIFY_SIGNED_XML_FILE,
                                                          amount,

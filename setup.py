@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='realex',
-      version='0.1',
+      version='0.3',
       description='Integrated example application using Realexs Auth API',
       url='https://github.com/TestingPays',
       author='Luke Rickard',
